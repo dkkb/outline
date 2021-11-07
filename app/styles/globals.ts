@@ -27,7 +27,7 @@ export default createGlobalStyle`
   }
 
   body {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.5;
     color: ${(props) => props.theme.text};
     overscroll-behavior-y: none;
