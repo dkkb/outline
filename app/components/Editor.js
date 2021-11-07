@@ -238,9 +238,16 @@ const StyledEditor = styled(RichMarkdownEditor)`
     }
   }
 
+  img {
+    box-shadow: 0 0 10px #555;
+    border-radius: 0;
+    -webkit-box-shadow: 0 0 10px #555;
+  }
+
   p {
+    margin-top: 10px;
     a {
-      color: ${(props) => props.theme.text};
+      color: #5f87ff;
       border-bottom: 1px solid ${(props) => lighten(0.5, props.theme.text)};
       text-decoration: none !important;
       font-weight: 500;
@@ -250,6 +257,11 @@ const StyledEditor = styled(RichMarkdownEditor)`
         text-decoration: none;
       }
     }
+  }
+  code {
+    font-size: 100% !important;
+    color: #eb5757;
+    background: rgba(135, 131, 120, 0.15);
   }
 
   .ProseMirror {

@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import Router from "koa-router";
 import { v4 as uuidv4 } from "uuid";
 import { NotFoundError } from "../../errors";
+import Logger from "../../logging/logger";
 import auth from "../../middlewares/authentication";
 import { Attachment, Document, Event } from "../../models";
 import policy from "../../policies";
@@ -39,7 +40,9 @@ router.post("attachments.create", auth(), async (ctx) => {
   const bucket = acl === "public-read" ? "public" : "uploads";
   const key = `${bucket}/${user.id}/${s3Key}/${name}`;
   const credential = makeCredential();
-  const longDate = format(new Date(), "yyyyMMdd'T'HHmmss'Z'");
+  const d = new Date();
+  d.setHours(d.getHours() - 8);
+  const longDate = format(d, "yyyyMMdd'T'HHmmss'Z'");
   const policy = makePolicy(credential, longDate, acl, contentType);
   const endpoint = publicS3Endpoint();
   const url = `${endpoint}/${key}`;
@@ -59,7 +62,8 @@ router.post("attachments.create", auth(), async (ctx) => {
     teamId: user.teamId,
     userId: user.id,
   });
-
+  Logger.info("date1 ", longDate);
+  Logger.info("date2 ", new Date());
   await Event.create({
     name: "attachments.create",
     data: { name },

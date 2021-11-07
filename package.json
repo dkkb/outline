@@ -10,7 +10,7 @@
     "build:webpack": "webpack --config webpack.config.prod.js",
     "build": "yarn clean && yarn build:webpack && yarn build:i18n && yarn build:server",
     "start": "node ./build/server/index.js",
-    "dev": "NODE_ENV=development yarn concurrently -n api,collaboration  -c \"blue,magenta\" \"node --inspect=0.0.0.0 build/server/index.js --services=collaboration,websockets,admin,web,worker\"",
+    "dev": "NODE_ENV=development SECRET_KEY=28fdcc49256a2e8f4301c1009fee30276046a584cd5c12a73152ea8637aeb680 UTILS_SECRET=5854757a46bf58a3a992080068329f5fda7233f0adb4110d11466376d61273f2 SLACK_KEY=1033849291924.2696437922116 SLACK_SECRET=a513a3a8693617d03a8dc4d8e16b7ca9 yarn concurrently -n api,collaboration  -c \"blue,magenta\" \"node --inspect=0.0.0.0 build/server/index.js --services=collaboration,websockets,admin,web,worker\"",
     "dev:watch": "nodemon --exec \"yarn build:server && yarn build:i18n && yarn dev\" -e js --ignore build/ --ignore app/ --ignore flow-typed/",
     "lint": "eslint app server shared",
     "deploy": "git push heroku master",

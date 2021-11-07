@@ -153,7 +153,7 @@ const Link = styled(NavLink)`
 
   ${breakpoint("tablet")`
     padding: 4px 32px 4px 16px;
-    font-size: 15px;
+    font-size: 14px;
   `}
 
   @media (hover: hover) {
