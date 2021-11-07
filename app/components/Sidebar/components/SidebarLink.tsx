@@ -224,7 +224,7 @@ const Link = styled(NavLink)<{
 
   ${breakpoint("tablet")`
     padding: 4px 8px 4px 16px;
-    font-size: 15px;
+    font-size: 14px;
   `}
 
   @media (hover: hover) {
@@ -253,7 +253,7 @@ const Label = styled.div`
   position: relative;
   width: 100%;
   max-height: 4.8em;
-  line-height: 1.6;
+  line-height: 1.4;
 
   * {
     unicode-bidi: plaintext;

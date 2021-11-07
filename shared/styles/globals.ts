@@ -33,7 +33,7 @@ export default createGlobalStyle<Props>`
   }
 
   body {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.5;
     color: ${(props) => props.theme.text};
     overscroll-behavior-y: none;
@@ -80,7 +80,7 @@ export default createGlobalStyle<Props>`
     margin-top: 1em;
     margin-bottom: 0.5em;
   }
-  h1 { font-size: 2.25em; }
+  h1 { font-size: 1.75em; }
   h2 { font-size: 1.5em; }
   h3 { font-size: 1.25em; }
   h4 { font-size: 1em; }

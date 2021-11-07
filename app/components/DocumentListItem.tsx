@@ -197,7 +197,7 @@ const DocumentLink = styled(Link)<{
   display: flex;
   align-items: center;
   margin: 10px -8px;
-  padding: 6px 8px;
+  padding: 0 8px;
   border-radius: 8px;
   max-height: 50vh;
   width: calc(100vw - 8px);
