@@ -68,7 +68,7 @@ export default createGlobalStyle`
     margin-top: 1em;
     margin-bottom: 0.5em;
   }
-  h1 { font-size: 2.25em; }
+  h1 { font-size: 1.75em; }
   h2 { font-size: 1.5em; }
   h3 { font-size: 1.25em; }
   h4 { font-size: 1em; }
