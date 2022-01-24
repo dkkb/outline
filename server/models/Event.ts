@@ -4,7 +4,6 @@ import {
   BeforeCreate,
   BelongsTo,
   Column,
-  IsIP,
   IsUUID,
   Table,
   DataType,
@@ -27,7 +26,6 @@ class Event extends BaseModel {
   @Column
   name: string;
 
-  @IsIP
   @Column
   ip: string | null;
 

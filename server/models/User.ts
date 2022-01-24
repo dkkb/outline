@@ -5,7 +5,6 @@ import { Transaction, QueryTypes, FindOptions, Op } from "sequelize";
 import {
   Table,
   Column,
-  IsIP,
   IsEmail,
   HasOne,
   Default,
@@ -84,14 +83,12 @@ class User extends ParanoidModel {
   @Column
   lastActiveAt: Date | null;
 
-  @IsIP
   @Column
   lastActiveIp: string | null;
 
   @Column
   lastSignedInAt: Date | null;
 
-  @IsIP
   @Column
   lastSignedInIp: string | null;
 
