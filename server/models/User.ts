@@ -6,7 +6,6 @@ import { Transaction, QueryTypes, SaveOptions, Op } from "sequelize";
 import {
   Table,
   Column,
-  IsIP,
   IsEmail,
   Default,
   IsIn,
@@ -150,7 +149,6 @@ class User extends ParanoidModel {
   @Column
   lastActiveAt: Date | null;
 
-  @IsIP
   @Column
   lastActiveIp: string | null;
 
@@ -158,7 +156,6 @@ class User extends ParanoidModel {
   @Column
   lastSignedInAt: Date | null;
 
-  @IsIP
   @Column
   lastSignedInIp: string | null;
 
