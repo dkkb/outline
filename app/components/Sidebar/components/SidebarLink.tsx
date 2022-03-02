@@ -66,7 +66,7 @@ function SidebarLink(
   const theme = useTheme();
   const style = React.useMemo(
     () => ({
-      paddingLeft: `${(depth || 0) * 16 + 12}px`,
+      paddingLeft: `${(depth || 0) * 16 + 20}px`, // a
     }),
     [depth]
   );
@@ -131,7 +131,7 @@ const Content = styled.span`
 
 // accounts for whitespace around icon
 export const IconWrapper = styled.span`
-  margin-left: -4px;
+  //margin-left: -4px;
   margin-right: 4px;
   height: 24px;
   overflow: hidden;
