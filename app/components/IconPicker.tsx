@@ -45,6 +45,19 @@ import ContextMenu from "~/components/ContextMenu";
 import Flex from "~/components/Flex";
 import { LabelText } from "~/components/Input";
 import NudeButton from "~/components/NudeButton";
+import {
+  DockerIcon,
+  GolangIcon,
+  JavaIcon,
+  JSIcon,
+  RedisIcon,
+  PythonIcon,
+  KubernetesIcon,
+  MySQLIcon,
+  CPlusPlusIcon,
+  RustIcon,
+  MovieIcon, FinanceIcon, BookIcon, LinuxIcon
+} from "~/components/Sidebar/icon";
 import Text from "~/components/Text";
 
 const style = {
@@ -200,6 +213,21 @@ export const icons = {
     component: WarningIcon,
     keywords: "warning alert error",
   },
+  /* eslint-disable */
+  go_custom: { component: GolangIcon, keywords: "go" },
+  java_custom: { component: JavaIcon, keywords: "java" },
+  javascript_custom: { component: JSIcon, keywords: "javascript" },
+  redis_custom: { component: RedisIcon, keywords: "redis" },
+  python_custom: { component: PythonIcon, keywords: "python" },
+  k8s_custom: { component: KubernetesIcon, keywords: "Kubernetes" },
+  mysql_custom: { component: MySQLIcon, keywords: "mysql" },
+  cpp_custom: { component: CPlusPlusIcon, keywords: "c++" },
+  docker_custom: { component: DockerIcon, keywords: "docker" },
+  rust_custom: { component: RustIcon, keywords: "rust" },
+  movie_custom: { component: MovieIcon, keywords: "movie" },
+  finance_custom: { component: FinanceIcon, keywords: "finance" },
+  book_custom: { component: BookIcon, keywords: "book" },
+  linux_custom: { component: LinuxIcon, keywords: "linux" },
 };
 
 type Props = {
@@ -209,7 +237,7 @@ type Props = {
   icon: string;
   color: string;
 };
-
+/* eslint-disable */
 function IconPicker({ onOpen, onClose, icon, color, onChange }: Props) {
   const { t } = useTranslation();
   const theme = useTheme();
