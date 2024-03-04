@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import Router from "koa-router";
 import { v4 as uuidv4 } from "uuid";
 import { bytesToHumanReadable } from "@shared/utils/files";
@@ -9,7 +10,9 @@ import { Attachment, Document, Event } from "@server/models";
 import { authorize } from "@server/policies";
 import { ContextWithState } from "@server/types";
 import {
-  getPresignedPost,
+  makePolicy,
+  getSignature,
+  makeCredential,
   publicS3Endpoint,
   getSignedUrl,
 } from "@server/utils/s3";
@@ -56,7 +59,12 @@ router.post("attachments.create", auth(), async (ctx) => {
   const bucket = acl === "public-read" ? "public" : "uploads";
   const keyPrefix = `${bucket}/${user.id}/${modelId}`;
   const key = `${keyPrefix}/${name}`;
-  const presignedPost = await getPresignedPost(key, acl, contentType);
+  const credential = makeCredential();
+  const d = new Date();
+  d.setHours(d.getHours() - 8);
+  const longDate = format(d, "yyyyMMdd'T'HHmmss'Z'");
+  const policy = makePolicy(credential, longDate, acl, contentType);
+  // const presignedPost = await getPresignedPost(key, acl, contentType);
   const endpoint = publicS3Endpoint();
   const url = `${endpoint}/${keyPrefix}/${encodeURIComponent(name)}`;
 
@@ -107,7 +115,13 @@ router.post("attachments.create", auth(), async (ctx) => {
       form: {
         "Cache-Control": "max-age=31557600",
         "Content-Type": contentType,
-        ...presignedPost.fields,
+        acl,
+        key,
+        policy,
+        "x-amz-algorithm": "AWS4-HMAC-SHA256",
+        "x-amz-credential": credential,
+        "x-amz-date": longDate,
+        "x-amz-signature": getSignature(policy),
       },
       attachment: {
         documentId,
